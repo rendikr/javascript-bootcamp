@@ -26,3 +26,12 @@ console.log(notes.length)
 notes.forEach(function (item, index) {
   console.log(`${index}: ${item}`)
 })
+
+for (let count = 0; count <= 2; count++) {
+  console.log(`counting... ${count + 1}`)
+}
+
+for (let index = 0; index < notes.length; index++) {
+  const note = notes[index]
+  console.log(note)
+}
