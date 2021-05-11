@@ -35,3 +35,29 @@ for (let index = 0; index < notes.length; index++) {
   const note = notes[index]
   console.log(note)
 }
+
+// find the index of an item in the array
+console.log(notes.indexOf('My new second note'))
+
+const newNotes = [
+  {
+    title: 'My next trip',
+    body: 'I would like to go to Spain',
+  },
+  {
+    title: 'Habits to work on',
+    body: 'Exercise. Eating a bit better',
+  },
+  {
+    title: 'Office modification',
+    body: 'Get a new seat',
+  },
+]
+
+console.log(newNotes);
+
+// returns the found index in the array of objects
+const index = newNotes.findIndex(function (note, index) {
+  return note.title === 'Office modification'
+})
+console.log(index)
