@@ -12,5 +12,8 @@ todos.shift()
 
 console.log(`You have ${todos.length} todos`)
 console.log(`${todos}`)
-console.log(`Todo: ${todos[0]}`)
-console.log(`Todo: ${todos[todos.length - 2]}`)
+
+todos.forEach(function (item, index) {
+  const num = index + 1
+  console.log(`${num}. ${item}`)
+})

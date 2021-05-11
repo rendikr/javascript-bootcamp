@@ -22,3 +22,7 @@ notes.splice(1, 0, 'My new second note')
 
 console.log(notes)
 console.log(notes.length)
+
+notes.forEach(function (item, index) {
+  console.log(`${index}: ${item}`)
+})
