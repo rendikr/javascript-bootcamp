@@ -61,3 +61,20 @@ const index = newNotes.findIndex(function (note, index) {
   return note.title === 'Office modification'
 })
 console.log(index)
+
+const findNoteUsingFind = function (notes, noteTitle) {
+  return notes.find(function (note) {
+    return note.title.toLowerCase() === noteTitle.toLowerCase()
+  })
+}
+
+const findNoteUsingFindIndex = function (notes, noteTitle) {
+  const index = notes.findIndex(function (note) {
+    return note.title.toLowerCase() === noteTitle.toLowerCase()
+  })
+
+  return notes[index]
+}
+
+console.log(findNoteUsingFind(newNotes, 'office modification'))
+console.log(findNoteUsingFindIndex(newNotes, 'office modification'))
