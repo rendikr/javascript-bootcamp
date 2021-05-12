@@ -48,6 +48,6 @@ const todos = [
 // })
 
 // listen for a new todo creation
-document.querySelector('button').addEventListener('click', function (e) {
+document.querySelector('#btn-add').addEventListener('click', function (e) {
   console.log('add a new todo')
 })
