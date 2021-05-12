@@ -54,7 +54,7 @@ const newNotes = [
   },
 ]
 
-console.log(newNotes);
+console.log(newNotes)
 
 const sortNotes = function (notes) {
   notes.sort(function (a, b) {
