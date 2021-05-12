@@ -61,25 +61,11 @@ document.querySelector('#btn-add').addEventListener('click', function (e) {
   e.target.textContent = 'The button was clicked'
 })
 
-document
-  .querySelector('#btn-remove-all')
-  .addEventListener('click', function (e) {
-    document.querySelectorAll('note').forEach(function (note) {
-      note.remove()
-    })
-  })
-
 document.querySelector('#search-text').addEventListener('input', function (e) {
   filters.searchText = e.target.value
   renderNotes(notes, filters)
 })
 
-document.querySelector('#name-form').addEventListener('submit', function (e) {
-  e.preventDefault()
-  e.target.elements.firstName.value
-  e.target.elements.firstName.value = ''
-})
-
-document.querySelector('#for-fun').addEventListener('change', function (e) {
-  e.target.checked
+document.querySelector('#filter-by').addEventListener('change', function (e) {
+  console.log(e.target.value)
 })
