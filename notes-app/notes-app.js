@@ -1,62 +1,16 @@
 // DOM - Document Object Model
 
-const notes = [
-  {
-    title: 'My next trip',
-    body: 'I would like to go to Spain',
-  },
-  {
-    title: 'Habits to work on',
-    body: 'Exercise. Eating a bit better',
-  },
-  {
-    title: 'Office modification',
-    body: 'Get a new seat',
-  },
-]
-
-// Query and remove
-// note: if there are two <p> element, only the first one will be affected
-// const p = document.querySelector('p')
-// console.log(p)
-// p.remove()
-
-// Query all and remove
-// const ps = document.querySelectorAll('p')
-
-// ps.forEach(function (p) {
-//   p.textContent = 'Changing the value from javascript'
-//   console.log(p.textContent)
-//   p.remove()
-// })
-
-// add a new element
-// const newParagraph = document.createElement('p')
-// newParagraph.textContent = 'This is a new element from Javascript'
-// document.querySelector('body').appendChild(newParagraph)
+let notes = []
 
 const filters = {
   searchText: '',
 }
 
-// localStorage.setItem('location', 'Philadelphia')
+const notesJSON = localStorage.getItem('notes')
 
-// console.log(localStorage.getItem('location'))
-
-// localStorage.removeItem('location')
-
-// localStorage.clear()
-
-const user = {
-  name: 'Rendi K.',
-  age: '31',
+if (notesJSON !== null) {
+  notes = JSON.parse(notesJSON)
 }
-const userJSON = JSON.stringify(user)
-localStorage.setItem('user', userJSON)
-
-const userLocalStorage = localStorage.getItem('user')
-const parsedUser = JSON.parse(userLocalStorage)
-console.log(`${user.name} is ${user.age} years old`)
 
 const renderNotes = function (notes, filters) {
   const filteredNotes = notes.filter(function (note) {
@@ -69,7 +23,13 @@ const renderNotes = function (notes, filters) {
   // display filtered notes
   filteredNotes.forEach(function (note) {
     const noteEl = document.createElement('p')
-    noteEl.textContent = note.title
+
+    if (note.title.length > 0) {
+      noteEl.textContent = note.title
+    } else {
+      noteEl.textContent = 'Unnamed note'
+    }
+
     document.querySelector('#notes').appendChild(noteEl)
   })
 }
@@ -77,7 +37,13 @@ const renderNotes = function (notes, filters) {
 renderNotes(notes, filters)
 
 document.querySelector('#btn-add').addEventListener('click', function (e) {
-  e.target.textContent = 'The button was clicked'
+  notes.push({
+    title: '',
+    body: ''
+  })
+
+  localStorage.setItem('notes', JSON.stringify(notes))
+  renderNotes(notes, filters)
 })
 
 document.querySelector('#search-text').addEventListener('input', function (e) {
