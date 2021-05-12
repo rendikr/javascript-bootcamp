@@ -63,12 +63,14 @@ const index = newNotes.findIndex(function (note, index) {
 console.log(index)
 
 const findNoteUsingFind = function (notes, noteTitle) {
+  // array.find will return the object searched
   return notes.find(function (note) {
     return note.title.toLowerCase() === noteTitle.toLowerCase()
   })
 }
 
 const findNoteUsingFindIndex = function (notes, noteTitle) {
+  // array.findIndex will return the index of array item searched
   const index = notes.findIndex(function (note) {
     return note.title.toLowerCase() === noteTitle.toLowerCase()
   })
@@ -76,5 +78,16 @@ const findNoteUsingFindIndex = function (notes, noteTitle) {
   return notes[index]
 }
 
+const findNotesUsingFilter = function (notes, query) {
+  // array.filter will return an array with item matches with search query
+  return notes.filter(function (note, index) {
+    const isTitleMatch = note.title.toLowerCase().includes(query.toLowerCase())
+    const isBodyMatch = note.body.toLowerCase().includes(query.toLowerCase())
+
+    return isTitleMatch || isBodyMatch
+  })
+}
+
 console.log(findNoteUsingFind(newNotes, 'office modification'))
 console.log(findNoteUsingFindIndex(newNotes, 'office modification'))
+console.log(findNotesUsingFilter(newNotes, 'ne'))

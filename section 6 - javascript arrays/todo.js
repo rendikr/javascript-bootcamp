@@ -2,7 +2,7 @@
 const todos = [
   {
     text: 'Todo A',
-    completed: false,
+    completed: true,
   },
   {
     text: 'Todo B',
@@ -10,7 +10,7 @@ const todos = [
   },
   {
     text: 'Todo C',
-    completed: false,
+    completed: true,
   },
   {
     text: 'Todo D',
@@ -18,7 +18,7 @@ const todos = [
   },
   {
     text: 'Todo E',
-    completed: false,
+    completed: true,
   },
 ]
 
@@ -33,5 +33,13 @@ const deleteTodo = function (todos, todoValue) {
   }
 }
 
-deleteTodo(todos, 'Todo D')
+// create function to get all todos that aren't completed yet
+const getThingsToDo = function (todos) {
+  return todos.filter(function (todo, index) {
+    return !todo.completed
+  })
+}
+
+// deleteTodo(todos, 'Todo D')
 console.log(todos)
+console.log(getThingsToDo(todos))
