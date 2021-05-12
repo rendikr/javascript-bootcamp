@@ -56,11 +56,22 @@ const newNotes = [
 
 console.log(newNotes);
 
+const sortNotes = function (notes) {
+  notes.sort(function (a, b) {
+    if (a.title.toLowerCase() < b.title.toLowerCase()) {
+      return -1 // this will put a before b
+    } else if (a.title.toLowerCase() > b.title.toLowerCase()) {
+      return 1 // this will put a after b
+    } else {
+      return 0 // this will not change the ordering as a equal to b
+    }
+  })
+}
+
 // returns the found index in the array of objects
 const index = newNotes.findIndex(function (note, index) {
   return note.title === 'Office modification'
 })
-console.log(index)
 
 const findNoteUsingFind = function (notes, noteTitle) {
   // array.find will return the object searched

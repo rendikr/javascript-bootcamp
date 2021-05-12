@@ -40,6 +40,20 @@ const getThingsToDo = function (todos) {
   })
 }
 
+// create function to sort todos
+const sortTodos = function (todos) {
+  return todos.sort(function (a, b) {
+    if (!a.completed && b.completed) {
+      return -1
+    } else if (a.completed && !b.completed) {
+      return 1
+    } else {
+      return 0
+    }
+  })
+}
+
 // deleteTodo(todos, 'Todo D')
 console.log(todos)
 console.log(getThingsToDo(todos))
+console.log(sortTodos(todos))
