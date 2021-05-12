@@ -35,6 +35,28 @@ const notes = [
 // newParagraph.textContent = 'This is a new element from Javascript'
 // document.querySelector('body').appendChild(newParagraph)
 
+const filters = {
+  searchText: ''
+}
+
+const renderNotes = function (notes, filters) {
+  const filteredNotes = notes.filter(function (note) {
+    return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
+  })
+
+  // clear existing notes
+  document.querySelector('#notes').innerHTML = ''
+
+  // display filtered notes
+  filteredNotes.forEach(function (note) {
+    const noteEl = document.createElement('p')
+    noteEl.textContent = note.title
+    document.querySelector('#notes').appendChild(noteEl)
+  })
+}
+
+renderNotes(notes, filters)
+
 document.querySelector('#btn-add').addEventListener('click', function (e) {
   e.target.textContent = 'The button was clicked'
 })
@@ -46,5 +68,6 @@ document.querySelector('#btn-remove-all').addEventListener('click', function (e)
 })
 
 document.querySelector('#search-text').addEventListener('input', function (e) {
-  console.log(e)
+  filters.searchText = e.target.value
+  renderNotes(notes, filters)
 })

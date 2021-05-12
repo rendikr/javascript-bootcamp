@@ -32,20 +32,20 @@ const todos = [
 //   }
 // })
 
-// const incompleteTodos = todos.filter(function (todo) {
-//   return !todo.completed
-// })
-// let incompleteTodo = incompleteTodos.length
+const incompleteTodos = todos.filter(function (todo) {
+  return !todo.completed
+})
+let incompleteTodo = incompleteTodos.length
 
-// const summary = document.createElement('h2')
-// summary.textContent = `You have ${incompleteTodo} todos left`
-// document.querySelector('body').appendChild(summary)
+const summary = document.createElement('h2')
+summary.textContent = `You have ${incompleteTodo} todos left`
+document.querySelector('body').appendChild(summary)
 
-// todos.forEach(function (todo) {
-//   const p = document.createElement('p')
-//   p.textContent = todo.text
-//   document.querySelector('body').appendChild(p)
-// })
+todos.forEach(function (todo) {
+  const p = document.createElement('p')
+  p.textContent = todo.text
+  document.querySelector('body').appendChild(p)
+})
 
 // listen for a new todo creation
 document.querySelector('#btn-add').addEventListener('click', function (e) {
