@@ -17,20 +17,24 @@ const notes = [
 
 // Query and remove
 // note: if there are two <p> element, only the first one will be affected
-const p = document.querySelector('p')
-console.log(p)
-p.remove()
+// const p = document.querySelector('p')
+// console.log(p)
+// p.remove()
 
 // Query all and remove
-const ps = document.querySelectorAll('p')
+// const ps = document.querySelectorAll('p')
 
-ps.forEach(function (p) {
-  p.textContent = 'Changing the value from javascript'
-  console.log(p.textContent)
-  p.remove()
-})
+// ps.forEach(function (p) {
+//   p.textContent = 'Changing the value from javascript'
+//   console.log(p.textContent)
+//   p.remove()
+// })
 
 // add a new element
-const newParagraph = document.createElement('p')
-newParagraph.textContent = 'This is a new element from Javascript'
-document.querySelector('body').appendChild(newParagraph)
+// const newParagraph = document.createElement('p')
+// newParagraph.textContent = 'This is a new element from Javascript'
+// document.querySelector('body').appendChild(newParagraph)
+
+document.querySelector('button').addEventListener('click', function (e) {
+  e.target.textContent = 'The button was clicked'
+})

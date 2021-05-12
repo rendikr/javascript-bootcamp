@@ -24,25 +24,30 @@ const todos = [
 ]
 
 // Query all
-const ps = document.querySelectorAll('p')
+// const ps = document.querySelectorAll('p')
 
-ps.forEach(function (p) {
-  if (p.textContent.toLowerCase().includes('the')) {
-    p.remove()
-  }
-})
+// ps.forEach(function (p) {
+//   if (p.textContent.toLowerCase().includes('the')) {
+//     p.remove()
+//   }
+// })
 
-const incompleteTodos = todos.filter(function (todo) {
-  return !todo.completed
-})
-let incompleteTodo = incompleteTodos.length
+// const incompleteTodos = todos.filter(function (todo) {
+//   return !todo.completed
+// })
+// let incompleteTodo = incompleteTodos.length
 
-const summary = document.createElement('h2')
-summary.textContent = `You have ${incompleteTodo} todos left`
-document.querySelector('body').appendChild(summary)
+// const summary = document.createElement('h2')
+// summary.textContent = `You have ${incompleteTodo} todos left`
+// document.querySelector('body').appendChild(summary)
 
-todos.forEach(function (todo) {
-  const p = document.createElement('p')
-  p.textContent = todo.text
-  document.querySelector('body').appendChild(p)
+// todos.forEach(function (todo) {
+//   const p = document.createElement('p')
+//   p.textContent = todo.text
+//   document.querySelector('body').appendChild(p)
+// })
+
+// listen for a new todo creation
+document.querySelector('button').addEventListener('click', function (e) {
+  console.log('add a new todo')
 })
