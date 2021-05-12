@@ -51,3 +51,7 @@ const todos = [
 document.querySelector('#btn-add').addEventListener('click', function (e) {
   console.log('add a new todo')
 })
+
+document.querySelector('#input-text').addEventListener('input', function (e) {
+  console.log(e.target.value)
+})
