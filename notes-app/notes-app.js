@@ -1,37 +1,9 @@
 // DOM - Document Object Model
 
-let notes = []
+const notes = getSavedNotes()
 
 const filters = {
   searchText: '',
-}
-
-const notesJSON = localStorage.getItem('notes')
-
-if (notesJSON !== null) {
-  notes = JSON.parse(notesJSON)
-}
-
-const renderNotes = function (notes, filters) {
-  const filteredNotes = notes.filter(function (note) {
-    return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
-  })
-
-  // clear existing notes
-  document.querySelector('#notes').innerHTML = ''
-
-  // display filtered notes
-  filteredNotes.forEach(function (note) {
-    const noteEl = document.createElement('p')
-
-    if (note.title.length > 0) {
-      noteEl.textContent = note.title
-    } else {
-      noteEl.textContent = 'Unnamed note'
-    }
-
-    document.querySelector('#notes').appendChild(noteEl)
-  })
 }
 
 renderNotes(notes, filters)
@@ -39,10 +11,10 @@ renderNotes(notes, filters)
 document.querySelector('#btn-add').addEventListener('click', function (e) {
   notes.push({
     title: '',
-    body: ''
+    body: '',
   })
 
-  localStorage.setItem('notes', JSON.stringify(notes))
+  saveNotes(notes)
   renderNotes(notes, filters)
 })
 
