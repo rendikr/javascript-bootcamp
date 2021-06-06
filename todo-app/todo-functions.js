@@ -12,6 +12,16 @@ const saveTodoList = function (todoList) {
   localStorage.setItem('todoList', JSON.stringify(todoList));
 };
 
+const removeTodo = function (id) {
+  const todoIndex = todoList.findIndex(function (todo) {
+    return todo.id === id;
+  });
+
+  if (todoIndex > -1) {
+    todoList.splice(todoIndex, 1);
+  }
+};
+
 const renderTodoList = function (todoList, filters) {
   let filteredTodoList = todoList.filter(function (todo) {
     const searchTextMatch = todo.text
@@ -64,6 +74,11 @@ const generateTodoDOM = function (todo) {
   // setup the remove button
   remoteButtonEl.textContent = 'x';
   todoEl.appendChild(remoteButtonEl);
+  remoteButtonEl.addEventListener('click', function () {
+    removeTodo(todo.id);
+    saveTodoList(todoList);
+    renderTodoList(todoList, filters);
+  });
 
   return todoEl;
 };
