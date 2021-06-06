@@ -18,6 +18,7 @@ document.querySelector('#new-todo').addEventListener('submit', function (e) {
   e.preventDefault();
   const newTodo = e.target.elements.newTodo.value;
   todoList.push({
+    id: uuidv4(),
     text: newTodo,
     completed: false,
   });

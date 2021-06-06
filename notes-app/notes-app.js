@@ -10,6 +10,7 @@ renderNotes(notes, filters);
 
 document.querySelector('#btn-add').addEventListener('click', function (e) {
   notes.push({
+    id: uuidv4(),
     title: '',
     body: '',
   });
