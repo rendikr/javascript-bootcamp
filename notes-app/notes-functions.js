@@ -1,44 +1,53 @@
 // read existing notes from localStorage
 const getSavedNotes = function () {
-  const notesJSON = localStorage.getItem('notes')
+  const notesJSON = localStorage.getItem('notes');
 
   if (notesJSON !== null) {
-    return JSON.parse(notesJSON)
+    return JSON.parse(notesJSON);
   }
 
-  return []
-}
+  return [];
+};
 
 // save the notes to localStorage
 const saveNotes = function (notes) {
-  localStorage.setItem('notes', JSON.stringify(notes))
-}
+  localStorage.setItem('notes', JSON.stringify(notes));
+};
 
 // generate the DOM structure for a note
 const generateNoteDOM = function (note) {
-  const noteEl = document.createElement('p')
+  const noteEl = document.createElement('div');
+  const textEl = document.createElement('span');
+  const buttonEl = document.createElement('button');
 
+  // setup the remove note button
+  buttonEl.textContent = 'x';
+  noteEl.appendChild(buttonEl);
+
+  // setup the note title text
   if (note.title.length > 0) {
-    noteEl.textContent = note.title
+    textEl.textContent = note.title;
   } else {
-    noteEl.textContent = 'Unnamed note'
+    textEl.textContent = 'Unnamed note';
   }
 
-  return noteEl
-}
+  noteEl.appendChild(textEl);
+
+  return noteEl;
+};
 
 // render notes to html
 const renderNotes = function (notes, filters) {
   const filteredNotes = notes.filter(function (note) {
-    return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
-  })
+    return note.title.toLowerCase().includes(filters.searchText.toLowerCase());
+  });
 
   // clear existing notes
-  document.querySelector('#notes').innerHTML = ''
+  document.querySelector('#notes').innerHTML = '';
 
   // display filtered notes
   filteredNotes.forEach(function (note) {
-    const noteEl = generateNoteDOM(note)
-    document.querySelector('#notes').appendChild(noteEl)
-  })
-}
+    const noteEl = generateNoteDOM(note);
+    document.querySelector('#notes').appendChild(noteEl);
+  });
+};

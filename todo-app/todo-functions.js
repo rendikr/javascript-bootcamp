@@ -18,7 +18,7 @@ const renderTodoList = function (todoList, filters) {
       .toLowerCase()
       .includes(filters.searchText.toLowerCase());
     const hideCompletedMatch = !filters.hideCompleted || !todo.completed;
-    debugger
+    debugger;
     return searchTextMatch && hideCompletedMatch;
   });
 
@@ -41,13 +41,29 @@ const renderTodoList = function (todoList, filters) {
 };
 
 const generateTodoDOM = function (todo) {
-  const todoEl = document.createElement('p');
+  const todoEl = document.createElement('div');
+  const checkboxEl = document.createElement('input');
+  const textEl = document.createElement('span');
+  const remoteButtonEl = document.createElement('button');
 
+  // set the attribute for checkboxEl input
+  checkboxEl.setAttribute('type', 'checkbox');
+
+  // setup the checkbox
+  todoEl.appendChild(checkboxEl);
+
+  // setup the todo title
   if (todo.text.length > 0) {
-    todoEl.textContent = todo.text;
+    textEl.textContent = todo.text;
   } else {
-    todoEl.textContent = 'Unnamed todo';
+    textEl.textContent = 'Unnamed todo';
   }
+
+  todoEl.appendChild(textEl);
+
+  // setup the remove button
+  remoteButtonEl.textContent = 'x';
+  todoEl.appendChild(remoteButtonEl);
 
   return todoEl;
 };
